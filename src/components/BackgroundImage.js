@@ -6,6 +6,8 @@ import ProTypes from 'prop-types';
 
 const BackgroundImage = ({ randomFrom }) => {
     const [currectBackground, setCurrectBackground] = useState("");
+    const [greeting, setGreeting] = useState("");
+
     let randomNumber = Math.floor(Math.random() * 7);
 
     return (
@@ -13,8 +15,11 @@ const BackgroundImage = ({ randomFrom }) => {
             <DisplayHour 
                 randomNumber={randomNumber}
                 setCurrectBackground={setCurrectBackground} 
+                setGreeting={setGreeting}
             />
-            <DisplayName />
+            <DisplayName 
+                greeting={greeting}
+            />
             <DisplayPhrase randomFrom={randomFrom} />
         </div>
     )

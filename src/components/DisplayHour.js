@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './backgrounds.css';
 import ProTypes from 'prop-types';
 
-const DisplayHour = ({ setCurrectBackground, randomNumber }) => {
+const DisplayHour = ({ setCurrectBackground, randomNumber,setGreeting }) => {
     const [time, setTime] = useState("0:00:00 am");
     const [AmOrPm, setAmOrPm] = useState("");
 
@@ -24,18 +24,24 @@ const DisplayHour = ({ setCurrectBackground, randomNumber }) => {
         }
 
         const interval = setInterval(() => {
-            setTime(time => time = getHour());
+            setTime(t => t = getHour());
         }, 1000);
         return () => clearInterval(interval);
     },[]);
 
-    if(AmOrPm === 'A.M'){
-        setCurrectBackground(bg => bg = `morning_${randomNumber}`);
-    }else if(parseInt(time.split(":")[0]) >= 6){
-        setCurrectBackground(bg => bg = `afternoon${randomNumber}`);
+    if(new Date().getHours() < 18 ){
+        setCurrectBackground(bg => bg = `afternoon_${randomNumber}`);
+        setGreeting(g => g = " Buenas Tardes");
     }else{
         setCurrectBackground(bg => bg =`night_${randomNumber}`);
+        setGreeting(g => g = " Buenas Noches");
     }
+    
+    if(AmOrPm === 'A.M'){
+        setCurrectBackground(bg => bg = `morning_${randomNumber}`);
+        setGreeting(g => g = " Buenos Dias");
+    }
+    
 
     return ( 
         <div className='hour__container'>

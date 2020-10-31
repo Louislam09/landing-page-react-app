@@ -1,6 +1,7 @@
 import React from 'react';
 
-const DisplayName = () => {
+const DisplayName = ({ greeting }) => {
+
     const handleChange = e => {
         localStorage.setItem('user-name',JSON.stringify(e.target.innerText));
     }
@@ -22,7 +23,7 @@ const DisplayName = () => {
     return ( 
         <div className="name__container">
             <div>
-                Buenos Dias, 
+                {greeting}, 
                 <span 
                     contentEditable={true} 
                     suppressContentEditableWarning={true}
