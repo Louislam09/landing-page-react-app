@@ -1,38 +1,16 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Form from './components/Form';
-import Result from './components/Result';
+import React, { Fragment } from 'react';
+import BackgroundImage from './components/BackgroundImage';
 
 function App() {
+  const randomFrom = arr => arr[Math.floor(Math.random() * arr.length)];
 
-  const [ result, setResult ] = useState({
-    firstFruit: 0,
-    tithe: 0,
-    total: 0
-  })
-
-  return (
-    <div className="App">
-      
-      <Header title='Calculadora de Maser'/>
-
-      <div className="container">
-        <div className="row">
-          <div className="formulario col l6 m6 s12">
-            <Form 
-              setResult={setResult}
-            />
-          </div>
-          
-          <div className="col l6 m6 s12">
-            <Result 
-              result={result}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return(
+    <Fragment>
+      <BackgroundImage 
+        randomFrom={randomFrom}
+      />
+    </Fragment>
+  )
 }
 
 export default App;
